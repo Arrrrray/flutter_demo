@@ -1,7 +1,7 @@
 /*
  * @Author: junchao
  * @Date: 2020-10-19 18:15:23
- * @LastEditTime: 2020-10-19 18:22:50
+ * @LastEditTime: 2020-10-19 18:29:10
  * @LastEditors: junchao
  * @Description: flutter动画：放大缩小
  * @FilePath: /flutter_demo/lib/animate_page/animate_page2.dart
@@ -26,5 +26,13 @@ class _AnimatePage extends State<AnimatePage2>
       duration: Duration(seconds: 3),
     );
     // 使用弹性曲线，数据变化从0到300
+    animation = CurvedAnimation(parent: controller, curve: Curves.bounceIn);
+    animation = Tween(begin: 0.0, end: 300.0).animate(animation)
+      ..addListener(() {
+        setState(() {});
+      });
+
+    // 启动动画（正向执行）
+    controller.forward();
   }
 }
