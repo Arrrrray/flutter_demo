@@ -1,10 +1,10 @@
 /*
  * @Author: junchao
  * @Date: 2020-10-19 18:15:23
- * @LastEditTime: 2020-10-19 18:29:10
+ * @LastEditTime: 2020-10-20 11:51:51
  * @LastEditors: junchao
  * @Description: flutter动画：放大缩小
- * @FilePath: /flutter_demo/lib/animate_page/animate_page2.dart
+ * @FilePath: /flutter_demo/lib/pages/animate_page/animate_page2.dart
  * @可以输入预定的版权声明、个性签名、空行等
  */
 import 'package:flutter/material.dart';
@@ -34,5 +34,28 @@ class _AnimatePage extends State<AnimatePage2>
 
     // 启动动画（正向执行）
     controller.forward();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Animate Page2"),
+      ),
+      body: Center(
+        child: Image.asset(
+          "lib/assets/images/logo.png",
+          width: animation.value,
+          height: animation.value,
+        ),
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    // 路由销毁时需要释放动画资源
+    controller.dispose();
+    super.dispose();
   }
 }
